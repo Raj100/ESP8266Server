@@ -4,8 +4,12 @@ const mongoose = require('mongoose');
 const Attendance = require('./models/attendanceSchema');
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
+const cors = require('cors');
 
 const url = process.env.url
+
+app.use(express.json());
+app.use(cors());
 
 mongoose.connect(url).then((ans) => {
     console.log("Connected Successful to the Database")
@@ -29,6 +33,7 @@ app.put('/submitattendance', (req, res) => {
   console.log(req.body);
   res.send('Attendance submitted successfully');
 });
+
 app.get('/getattendance', (req, res) => {
     Attendance.find()
         .then((attendance) => {
