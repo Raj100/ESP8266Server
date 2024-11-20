@@ -17,6 +17,10 @@ mongoose.connect(url).then((ans) => {
     console.log("Error in the Connection")
   });
 
+app.get('/',(req,res)=>{
+res.send("ok!");
+});
+
 app.put('/submitattendance', (req, res) => {
     const newAttendance = new Attendance({
         name: req.body.name,
