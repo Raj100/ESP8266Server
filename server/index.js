@@ -24,7 +24,6 @@ res.send("ok!");
 app.put('/submitattendance', (req, res) => {
     const newAttendance = new Attendance({
         name: req.body.name,
-        time: req.body.time
     });
 
     newAttendance.save()
