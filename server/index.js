@@ -11,11 +11,23 @@ const url = process.env.url
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(url).then((ans) => {
-    console.log("Connected Successful to the Database")
-  }).catch((err) => {
-    console.log("Error in the Connection")
-  });
+
+  async function connectToDatabase() {
+    try {
+      await mongoose.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 50000, // Increased timeout
+      });
+      console.log("✅ Connected successfully to the database!");
+    } catch (err) {
+      console.error("❌ Error connecting to the database:", err.message);
+      process.exit(1); // Exit the process if the connection fails
+    }
+  }
+  
+  // Connect to the database
+  connectToDatabase();
 
 app.get('/',(req,res)=>{
 res.send("ok!");
