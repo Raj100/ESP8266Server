@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get<AttendanceRecord[]>('http://localhost:5001/getattendance')
+      .get<AttendanceRecord[]>('https://esp-8266-server.vercel.app/getattendance')
       .then(response => {
         console.log(response.data);
         setAttendance(response.data);
