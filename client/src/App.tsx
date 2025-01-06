@@ -37,7 +37,7 @@ function App() {
         )}
       </div>
       <p className="read-the-docs">
-        Made with ❤️ by <strong>Raj Fahim Alok Agnib</strong>
+        Made with ❤️ by <strong>Raj</strong>
       </p>
     </>
   );
